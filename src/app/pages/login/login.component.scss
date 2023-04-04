@@ -1,0 +1,31 @@
+:host{
+  display: flex;
+  height: 100vh;
+  box-shadow: 0 2px 0px 5px rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+}
+.front{
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.7)
+  ),url("../../../assets/white_bg.jpg");
+  background-size: cover;
+}
+.formLogin{
+  background-color: var(--primaryColor);
+}
+
+.box-input{
+  label{
+      transition: all ease-in-out 0.5s;
+      position: absolute;
+      top: 24px;
+      left: 1rem;
+      opacity: 50%;
+  }
+}
+.animate{
+  transform: translate(-5px,-23px) rotate3d(1, 0, 0, 360deg);
+  font-weight: bold;
+
+}
