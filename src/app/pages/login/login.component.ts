@@ -32,9 +32,9 @@ export class LoginComponent {
       label.style.opacity = '50%';
     }
   }
-  constructor(private router:Router) {}
+  constructor(private router: Router) {}
 
-  login(){
-    this.router.navigate(["/home"])
+  login() {
+    this.router.navigate(['/home']);
   }
 }
