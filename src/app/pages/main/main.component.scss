@@ -1,100 +1,99 @@
-:host{
+:host {
   display: grid;
-  grid-template: repeat(10, min-content)/repeat(6, 1fr);
-  gap:1rem;
+  grid-template: repeat(10, min-content) / repeat(6, 1fr);
+  gap: 1rem;
   width: 100vw;
   margin: 0 auto 0 auto;
 }
-header{
+header {
   display: flex;
   grid-column: span 6;
 }
-.profile{
+.profile {
   display: none;
 }
-.tarjet_card{
+.tarjet_card {
   grid-column: span 6;
   position: relative;
   height: 30vh;
-  &_amount{
+  &_amount {
     position: absolute;
     left: 10%;
     top: 10%;
   }
-  &_profile{
+  &_profile {
     display: flex;
     flex-direction: column;
     position: absolute;
-    left:10%;
+    left: 10%;
     bottom: 10%;
   }
-  &_date{
+  &_date {
     display: flex;
     flex-direction: column;
     position: absolute;
-    left:40%;
+    left: 40%;
     bottom: 10%;
   }
-  &_number{
+  &_number {
     position: absolute;
     right: 10%;
     top: 50%;
   }
 }
-.linear_graphic{
+.linear_graphic {
   grid-column: span 6;
 }
-#chartBar{
+#chartBar {
   height: 250px;
 }
-.completado{
+.completado {
   color: green;
 }
-.cancelado{
+.cancelado {
   color: red;
 }
-.pendiente{
+.pendiente {
   color: gray;
 }
 
 @media screen and (min-width: 440px) {
-  .profile{
+  .profile {
     display: inline-flex;
   }
-  .tarjet_card{
+  .tarjet_card {
     grid-column: span 4;
   }
 }
-@media screen and (min-width: 550px){
-  .tarjet_card{
+@media screen and (min-width: 550px) {
+  .tarjet_card {
     grid-column: span 3;
   }
-  .lineChart{
+  .lineChart {
     grid-column: span 3;
   }
 }
-@media screen and (min-width: 550px){
-  .tarjet_card{
+@media screen and (min-width: 550px) {
+  .tarjet_card {
     grid-column: span 3;
     height: auto;
   }
 }
 
-@media screen and (min-width: 1028px){
-
-  :host{
+@media screen and (min-width: 1028px) {
+  :host {
     width: 80vw;
   }
 }
-@media screen and (min-width: 1200px){
-
-  .tarjet_card{
+@media screen and (min-width: 1200px) {
+  .tarjet_card {
     grid-column: span 2;
   }
-  .lineChart{
+  .lineChart {
     grid-column: span 2;
   }
-  .chartBar,.table_transaccion{
+  .chartBar,
+  .table_transaccion {
     grid-column: span 3;
   }
 }

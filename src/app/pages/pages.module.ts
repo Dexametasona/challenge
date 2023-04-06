@@ -7,23 +7,14 @@ import { MainComponent } from './main/main.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 
-
-
 @NgModule({
   declarations: [
     HomeComponent,
     LoginComponent,
     MainComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule
-  ],
-  exports:[
-    HomeComponent,
-    LoginComponent
-  ]
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  exports: [HomeComponent, LoginComponent],
 })
-export class PagesModule { }
+export class PagesModule {}

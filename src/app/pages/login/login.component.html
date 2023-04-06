@@ -20,10 +20,7 @@
       </div>
       <!-- document number ----------------------------------------------------------------------------------------------->
       <div class="relative box-input mb-6">
-        <label
-          for="dni"
-          id="dniLabel"
-          class="text-slate-500"
+        <label for="dni" id="dniLabel" class="text-slate-500"
           >Número de documento</label
         >
         <input
@@ -32,8 +29,7 @@
           id="dni"
           class="bg-gray-50 border transition duration-250 ease-in-out text-gray-900 text-lg rounded-lg focus:ring-4 focus:ring-opacity-50 focus:outline-none block w-full p-2.5 pt-5 pr-7"
           [ngClass]="
-            form.get('dni')?.untouched ||
-            form.get('dni')?.valid
+            form.get('dni')?.untouched || form.get('dni')?.valid
               ? 'focus:ring-green-300 border-slate-300'
               : 'focus:ring-rose-300 border-red-300'
           "
@@ -42,10 +38,7 @@
           (blur)="animacionOut('dniLabel', 'dni')"
         />
         <!-- icons ------------------------------------------------------------------>
-        <div
-          class="absolute top-5 right-1"
-          *ngIf="form.get('dni')?.touched"
-        >
+        <div class="absolute top-5 right-1" *ngIf="form.get('dni')?.touched">
           <img
             src="assets/check-icon.svg"
             *ngIf="form.get('dni')?.valid"
@@ -60,10 +53,7 @@
         <!-- alertas --------------------------------------------------------------------->
         <div
           class="error-alert"
-          *ngIf="
-            form.get('dni')?.touched &&
-            form.get('dni')?.invalid
-          "
+          *ngIf="form.get('dni')?.touched && form.get('dni')?.invalid"
         >
           <div
             class="flex p-1 text-sm text-red-400 rounded-lg"
@@ -93,7 +83,9 @@
       </div>
       <!-- password----------------------------------------------------------------------------------------------------------- -->
       <div class="relative box-input mb-6">
-        <label for="pass" id="passLabel" class="text-slate-500">Contraseña</label>
+        <label for="pass" id="passLabel" class="text-slate-500"
+          >Contraseña</label
+        >
         <input
           type="password"
           name="pass"
@@ -156,7 +148,10 @@
       <p>Teclado virtual</p>
     </div>
     <div class="basis-2/12 flex justify-center items-center">
-      <p>no tienes cuenta? Regístrate <a class="font-bold underline cursor-pointer">aquí</a></p>
+      <p>
+        no tienes cuenta? Regístrate
+        <a class="font-bold underline cursor-pointer">aquí</a>
+      </p>
     </div>
   </section>
 </article>

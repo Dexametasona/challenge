@@ -1,5 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 
@@ -8,17 +15,20 @@ import Swal from 'sweetalert2';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
-  constructor(private data: DataService, private router:Router) {}
+export class HomeComponent implements OnInit, OnDestroy {
+  suscripcion!: Subscription;
+  constructor(private data: DataService, private router: Router) {}
   rutas!: any[];
 
   @ViewChild('navBar') navBar!: ElementRef;
   buttonVisible = true;
 
   ngOnInit(): void {
-    this.data.getUserData(this.data.usuario[0]).subscribe((res) => {
-      this.rutas = res.filter((user) => user['tipo'] == 'rutas');
-    });
+    this.suscripcion = this.data
+      .getUserData(this.data.usuario[0])
+      .subscribe((res) => {
+        this.rutas = res.filter((user) => user['tipo'] == 'rutas');
+      });
   }
 
   moveNavBar() {
@@ -26,18 +36,21 @@ export class HomeComponent implements OnInit {
     this.buttonVisible = !this.buttonVisible;
   }
 
-  logout(){
+  logout() {
     Swal.fire({
-      icon:'question',
-      title:"Cerrar sesión",
-      text:"Esta seguro que desea cerrar sesión?",
-      showCancelButton:true,
-      showConfirmButton:true
+      icon: 'question',
+      title: 'Cerrar sesión',
+      text: 'Esta seguro que desea cerrar sesión?',
+      showCancelButton: true,
+      showConfirmButton: true,
     }).then((result) => {
-      if(result.isConfirmed){
-        this.router.navigate(["/login"])
-        this.data.usuario=[{dni:"",pass:"",nombre:""}]
+      if (result.isConfirmed) {
+        this.router.navigate(['/login']);
+        this.data.usuario = [{ dni: '', pass: '', nombre: '' }];
       }
-    })
+    });
+  }
+  ngOnDestroy(): void {
+    this.suscripcion.unsubscribe();
   }
 }

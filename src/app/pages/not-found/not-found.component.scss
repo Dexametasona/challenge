@@ -1,11 +1,11 @@
-:host{
+:host {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
 }
-@media screen and (min-width:1028px) {
-  :host{
+@media screen and (min-width: 1028px) {
+  :host {
     width: 80vw;
   }
 }

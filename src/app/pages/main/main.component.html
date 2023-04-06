@@ -1,14 +1,28 @@
 <header class="p-2 flex justify-between">
   <div class="relative flex items-center">
-    <input type="text-xl" class="py-2 pl-8 rounded outline-0 opacity-90" >
-    <img  class="absolute top-2 opacity-50" src="assets/search_icon.svg" alt="search_icon">
+    <input type="text-xl" class="py-2 pl-8 rounded outline-0 opacity-90" />
+    <img
+      class="absolute top-2 opacity-50"
+      src="assets/search_icon.svg"
+      alt="search_icon"
+    />
   </div>
   <div class="flex">
-    <img class="xl:px-3 rounded-full hover:bg-slate-200 cursor-pointer" src="assets/settings_icon.svg" alt="ajust_icon">
-    <img class="xl:px-3 rounded-full hover:bg-slate-200 cursor-pointer" src="assets/bell_icon.svg" alt="alert_icon">
+    <img
+      class="xl:px-3 rounded-full hover:bg-slate-200 cursor-pointer"
+      src="assets/settings_icon.svg"
+      alt="ajust_icon"
+    />
+    <img
+      class="xl:px-3 rounded-full hover:bg-slate-200 cursor-pointer"
+      src="assets/bell_icon.svg"
+      alt="alert_icon"
+    />
     <div class="flex items-center">
-      <img src="assets/profile_icon.svg" alt="profile_picture">
-      <span class="profile font-bold text-white">{{tarjeta[0]['nombre']}}</span>
+      <img src="assets/profile_icon.svg" alt="profile_picture" />
+      <span class="profile font-bold text-white">{{
+        tarjeta[0]["nombre"]
+      }}</span>
     </div>
   </div>
 </header>
@@ -16,137 +30,173 @@
 <section class="tarjet_card rounded-lg bg-slate-300 opacity-50 mx-2 text-sm">
   <div class="tarjet_card_amount">
     <span>Mi saldo</span>
-    <p class="text-xl font-bold">{{tarjeta[0]['saldo'] |currency}}</p>
+    <p class="text-xl font-bold">{{ tarjeta[0]["saldo"] | currency }}</p>
   </div>
   <div class="tarjet_card_number">
-    <p class="font-bold">{{tarjeta[0]['numTarjeta']}}</p>
+    <p class="font-bold">{{ tarjeta[0]["numTarjeta"] }}</p>
   </div>
   <div class="tarjet_card_profile">
     <span>Titular tarjeta</span>
-    <span class="font-bold">{{tarjeta[0]['nombre']}}</span>
+    <span class="font-bold">{{ tarjeta[0]["nombre"] }}</span>
   </div>
   <div class="tarjet_card_date">
     <span>Válido hasta</span>
-    <span class="font-bold">{{tarjeta[0]['fechaVencimiento']}}</span>
+    <span class="font-bold">{{ tarjeta[0]["fechaVencimiento"] }}</span>
   </div>
-<!-- chart ingresos ---------------------------------------------------------------------- -->
+  <!-- chart ingresos ---------------------------------------------------------------------- -->
 </section>
-<section class="linear_graphic lineChart bg-slate-100 mx-2 rounded-lg shadow-lg shadow-black">
+<section
+  class="linear_graphic lineChart bg-slate-100 mx-2 rounded-lg shadow-lg shadow-black"
+>
   <div class="flex justify-around text-sm">
-    <img class="rounded-full bg-slate-100 opacity-50" src="assets/trendingUp_icon.svg" alt="trendingUp_ico">
+    <img
+      class="rounded-full bg-slate-100 opacity-50"
+      src="assets/trendingUp_icon.svg"
+      alt="trendingUp_ico"
+    />
     <div class="flex flex-col">
       <span>Ingreso Mensual</span>
-      <span>{{ingresoMensualTotal |currency}}</span>
+      <span>{{ ingresoMensualTotal | currency }}</span>
     </div>
     <div class="flex flex-col items-end">
-      <span class="text-green-300">{{((ingresoMensualTotal-ingresoMensual[0]['ingresoPasado'])/ingresoMensual[0]['ingresoPasado'])|percent}}</span>
+      <span class="text-green-300">{{
+        (ingresoMensualTotal - ingresoMensual[0]["ingresoPasado"]) /
+          ingresoMensual[0]["ingresoPasado"] | percent
+      }}</span>
       <span>Mes pasado</span>
     </div>
   </div>
-  <canvas id="chartIngreso">{{chartIngreso}}</canvas>
+  <canvas id="chartIngreso">{{ chartIngreso }}</canvas>
 </section>
 <!-- chart egresos----------------------------------------------------------------------- -->
-<section class="linear_graphic lineChart bg-slate-100 mx-2 rounded-lg shadow-lg shadow-black">
+<section
+  class="linear_graphic lineChart bg-slate-100 mx-2 rounded-lg shadow-lg shadow-black"
+>
   <div class="flex justify-around text-sm">
-    <img class="rounded-full bg-slate-100 opacity-50" src="assets/trendingDown_icon.svg" alt="trendingDown_ico">
+    <img
+      class="rounded-full bg-slate-100 opacity-50"
+      src="assets/trendingDown_icon.svg"
+      alt="trendingDown_ico"
+    />
     <div class="flex flex-col">
       <span>Egreso Mensual</span>
-      <span>{{egresoMensualTotal |currency}}</span>
+      <span>{{ egresoMensualTotal | currency }}</span>
     </div>
     <div class="flex flex-col items-end">
-      <span class="text-red-300">{{((egresoMensualTotal-egresoMensual[0]['egresoPasado'])/egresoMensual[0]['egresoPasado'])|percent}}</span>
+      <span class="text-red-300">{{
+        (egresoMensualTotal - egresoMensual[0]["egresoPasado"]) /
+          egresoMensual[0]["egresoPasado"] | percent
+      }}</span>
       <span>Mes pasado</span>
     </div>
   </div>
-  <canvas id="chartEgreso">{{chartEgreso}}</canvas>
+  <canvas id="chartEgreso">{{ chartEgreso }}</canvas>
 </section>
 <!-- chart barras----------------------------------------------------------------------------- -->
-<section class="linear_graphic  bg-slate-100 mx-2 chartBar rounded-lg shadow-lg shadow-black">
-  <canvas id="chartBar">{{chartBar}}</canvas>
+<section
+  class="linear_graphic bg-slate-100 mx-2 chartBar rounded-lg shadow-lg shadow-black"
+>
+  <canvas id="chartBar">{{ chartBar }}</canvas>
 </section>
 <!-- tabla transacciones------------------------------------------------------------------------- -->
-<section class="linear_graphic table_transaccion relative bg-slate-100 mx-2 shadow-black rounded overflow-x-auto shadow-lg sm:rounded-lg p-2">
-  <p class="text-2xl mb-3">
-    Ultimas transacciones
-  </p>
+<section
+  class="linear_graphic table_transaccion relative bg-slate-100 mx-2 shadow-black rounded overflow-x-auto shadow-lg sm:rounded-lg p-2"
+>
+  <p class="text-2xl mb-3">Ultimas transacciones</p>
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <tbody>
-        <tr class="border-b border-gray-200 dark:border-gray-700" *ngFor="let userTransaccion of transaccion, let i=index">
-            <th scope="row" class="px-3 dark:text-white dark:bg-gray-800">
-                <img class="rounded-full bg-slate-200" style="max-width: 20px;" [src]="(i+2)%2>0?'assets/north_east_icon.svg':'assets/south_west_icon.svg'" alt="icon_transaccion">
-            </th>
-            <th scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
-                {{userTransaccion.nombre |titlecase}}
-            </th>
-            <td class="px-2 py-4">
-                {{userTransaccion.monto |currency}}
-            </td>
-            <td class="px-2 py-4 whitespace-nowrap dark:bg-gray-800">
-                {{userTransaccion.fecha |date}}
-            </td>
-            <td class="px-2 py-4">
-                <span class="font-bold" [ngClass]="userTransaccion.estado">{{userTransaccion.estado  |titlecase}}</span>
-            </td>
-            <td class="px-2 py-4">
-              <button class="pointer">...</button>
-            </td>
-        </tr>
+      <tr
+        class="border-b border-gray-200 dark:border-gray-700"
+        *ngFor="let userTransaccion of transaccion; let i = index"
+      >
+        <th scope="row" class="px-3 dark:text-white dark:bg-gray-800">
+          <img
+            class="rounded-full bg-slate-200"
+            style="max-width: 20px"
+            [src]="
+              (i + 2) % 2 > 0
+                ? 'assets/north_east_icon.svg'
+                : 'assets/south_west_icon.svg'
+            "
+            alt="icon_transaccion"
+          />
+        </th>
+        <th
+          scope="row"
+          class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800"
+        >
+          {{ userTransaccion.nombre | titlecase }}
+        </th>
+        <td class="px-2 py-4">
+          {{ userTransaccion.monto | currency }}
+        </td>
+        <td class="px-2 py-4 whitespace-nowrap dark:bg-gray-800">
+          {{ userTransaccion.fecha | date }}
+        </td>
+        <td class="px-2 py-4">
+          <span class="font-bold" [ngClass]="userTransaccion.estado">{{
+            userTransaccion.estado | titlecase
+          }}</span>
+        </td>
+        <td class="px-2 py-4">
+          <button class="pointer">...</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </section>
 <!-- tabla deudas------------------------------------------------------------------------------- -->
-<section class="linear_graphic relative bg-slate-100 mx-2 rounded overflow-x-auto shadow-black shadow-lg sm:rounded-lg p-2">
+<section
+  class="linear_graphic relative bg-slate-100 mx-2 rounded overflow-x-auto shadow-black shadow-lg sm:rounded-lg p-2"
+>
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-        <tr>
-            <th scope="col" class="px-6 py-3 dark:bg-gray-800">
-              Monto total
-            </th>
-            <th scope="col" class="px-6 py-3">
-               Cuotas
-            </th>
-            <th scope="col" class="px-6 py-3 dark:bg-gray-800">
-              fecha de emisión
-            </th>
-            <th scope="col" class="px-6 py-3">
-              Mensual
-            </th>
-            <th scope="col" class="px-6 py-3">
-              Tasa de interes
-            </th>
-            <th scope="col" class="px-6 py-3">
-              Estado
-            </th>
-            <th scope="col" class="px-6 py-3">
-
-            </th>
-        </tr>
+      <tr>
+        <th scope="col" class="px-6 py-3 dark:bg-gray-800">Monto total</th>
+        <th scope="col" class="px-6 py-3">Cuotas</th>
+        <th scope="col" class="px-6 py-3 dark:bg-gray-800">fecha de emisión</th>
+        <th scope="col" class="px-6 py-3">Mensual</th>
+        <th scope="col" class="px-6 py-3">Tasa de interes</th>
+        <th scope="col" class="px-6 py-3">Estado</th>
+        <th scope="col" class="px-6 py-3"></th>
+      </tr>
     </thead>
     <tbody>
-        <tr class="border-b border-gray-200 dark:border-gray-700" *ngFor="let deuda of deudas">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800">
-                {{deuda.montoTotal|currency}}
-            </th>
-            <td class="px-6 py-4">
-                {{deuda.numeroCuota}}/{{deuda.totalCuotas}}
-            </td>
-            <td class="px-6 py-4 dark:bg-gray-800 whitespace-nowrap">
-                {{deuda.fechaEmision |date }}
-            </td>
-            <td class="px-6 py-4">
-                {{deuda.montoCuota |currency}}
-            </td>
-            <td class="px-6 py-4">
-                {{deuda.interes}}%
-            </td>
-            <td class="px-3 py-2">
-                <span class="rounded-xl px-2 py-2 " [ngClass]="deuda.estado=='pagar'?'bg-green-600 text-slate-50 cursor-pointer':'bg-green-200'">{{deuda.estado|titlecase}}</span>
-            </td>
-            <td class="px-6 py-4">
-                <button class="pointer">...</button>
-            </td>
-        </tr>
-
+      <tr
+        class="border-b border-gray-200 dark:border-gray-700"
+        *ngFor="let deuda of deudas"
+      >
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white dark:bg-gray-800"
+        >
+          {{ deuda.montoTotal | currency }}
+        </th>
+        <td class="px-6 py-4">
+          {{ deuda.numeroCuota }}/{{ deuda.totalCuotas }}
+        </td>
+        <td class="px-6 py-4 dark:bg-gray-800 whitespace-nowrap">
+          {{ deuda.fechaEmision | date }}
+        </td>
+        <td class="px-6 py-4">
+          {{ deuda.montoCuota | currency }}
+        </td>
+        <td class="px-6 py-4">{{ deuda.interes }}%</td>
+        <td class="px-3 py-2">
+          <span
+            class="rounded-xl px-2 py-2"
+            [ngClass]="
+              deuda.estado == 'pagar'
+                ? 'bg-green-600 text-slate-50 cursor-pointer'
+                : 'bg-green-200'
+            "
+            >{{ deuda.estado | titlecase }}</span
+          >
+        </td>
+        <td class="px-6 py-4">
+          <button class="pointer">...</button>
+        </td>
+      </tr>
     </tbody>
-</table>
+  </table>
 </section>

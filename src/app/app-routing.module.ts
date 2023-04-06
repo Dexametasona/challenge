@@ -7,17 +7,22 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  {path:"login", component:LoginComponent},
-  {path:"home", component:HomeComponent, canActivate:[LoginGuard], children:[
-    {path:"", redirectTo:"inicio", pathMatch:'full'},
-    {path:"inicio", component:MainComponent},
-    {path:"**", component:NotFoundComponent}
-  ]},
-  {path:"", redirectTo:"login", pathMatch:'full'}
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [LoginGuard],
+    children: [
+      { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+      { path: 'inicio', component: MainComponent },
+      { path: '**', component: NotFoundComponent },
+    ],
+  },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

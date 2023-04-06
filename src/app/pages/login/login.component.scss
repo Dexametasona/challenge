@@ -1,50 +1,50 @@
-:host{
+:host {
   display: flex;
   height: 100vh;
   box-shadow: 0 2px 0px 5px rgba(0, 0, 0, 0.5);
 }
-.front{
+.front {
   background: linear-gradient(
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.7)
-  ),url("../../../assets/white_bg.jpg");
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.7)
+    ),
+    url("../../../assets/white_bg.jpg");
   background-size: cover;
 }
-.formLogin{
+.formLogin {
   background-color: var(--primaryColor);
 }
 
-.box-input{
-  label{
-      transition: all ease-in-out 0.5s;
-      position: absolute;
-      top: 24px;
-      left: 1rem;
-      opacity: 50%;
+.box-input {
+  label {
+    transition: all ease-in-out 0.5s;
+    position: absolute;
+    top: 24px;
+    left: 1rem;
+    opacity: 50%;
   }
 }
-.animate{
-  transform: translate(-5px,-23px) rotate3d(1, 0, 0, 360deg);
+.animate {
+  transform: translate(-5px, -23px) rotate3d(1, 0, 0, 360deg);
   font-weight: bold;
-
 }
-.marco{
+.marco {
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
 }
-@media screen and (min-width : 680px) {
-  .marco{
+@media screen and (min-width: 680px) {
+  .marco {
     flex-direction: row;
   }
-  .front{
+  .front {
     flex-basis: 50%;
   }
 }
 
-@media screen and (min-width : 680px){
-  .marco{
+@media screen and (min-width: 680px) {
+  .marco {
     box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.492);
     height: 80vh;
     width: 80vw;
