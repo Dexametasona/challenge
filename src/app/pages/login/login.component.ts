@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
+import { LoginService } from 'src/app/services/login.service';
+import { UserInterface } from 'src/interface/UserInterface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   form = new FormGroup({
-    numberDocument: new FormControl('', [
+    dni: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(8),
@@ -32,9 +36,24 @@ export class LoginComponent {
       label.style.opacity = '50%';
     }
   }
-  constructor(private router: Router) {}
+  constructor(private router: Router, private loginService:LoginService, private data:DataService) {}
 
   login() {
-    this.router.navigate(['/home']);
+    const formulario=this.form.value as UserInterface
+    this.loginService.getUsers().subscribe(res=>{
+      this.data.usuario=res.filter(user=>user.pass==formulario.pass && user.dni==formulario.dni)
+      if(this.data.usuario[0]!=undefined){
+        this.router.navigate(['/home']);
+      }
+      else{
+        Swal.fire({
+          icon:'error',
+          title:"Error!!!",
+          text:"Usuario o contraseña incorrecta",
+          confirmButtonColor:"OK"
+        })
+      }
+    })
+
   }
 }

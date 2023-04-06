@@ -1,0 +1,35 @@
+:host{
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  background-color: var(--primaryColor);
+}
+nav{
+  ul{
+    background-color: var(--secondaryColor);
+  }
+  width: 100vw;
+  right: calc(75%);
+  transition: all ease-in-out .75s;
+  z-index: 10;
+}
+.slide{
+  right: 0;
+}
+@media screen and (min-width: 1028px){
+nav{
+  left: 0;
+  position: static;
+  background-color: white;
+  width: auto;
+  box-shadow:0 4px 4px 2px rgb(0,0,0, .75);
+  opacity: 0.9;
+}
+#button_slide{
+  display: none;
+}
+ul{
+  background-color: transparent !important;
+  width: 100%
+};
+}

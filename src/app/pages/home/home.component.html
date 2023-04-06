@@ -1,1 +1,15 @@
-<p>home works!</p>
+<nav class="fixed h-full flex" #navBar (click)="moveNavBar()">
+  <ul class="px-3 w-9/12" >
+    <p class="text-center text-4xl font-bold mb-4">Unimerca</p>
+    <li routerLinkActive="shadow-md shadow-slate-500" class="pb-3 item hover:bg-slate-300 rounded-lg" *ngFor="let ruta of rutas[0].ruta | keyvalue">
+      <a [routerLink]="ruta.value? ruta.value.toString():''" class="flex items-center gap-x-4 text-2xl font-bold xl:font-light"
+        ><img [src]="'assets/' + ruta.value + '_icon.svg'" alt="icon" />
+        {{ (ruta.value ? ruta.value.toString() : "pallala") | titlecase }}</a
+      >
+    </li>
+    <li class="pb-3 item hover:bg-slate-300 rounded-lg" (click)="logout()"><a class="flex items-center gap-x-4 text-2xl font-bold xl:font-light cursor-pointer"><img src="assets/logout.svg" alt="logout_icon"> Cerrar sesión</a></li>
+  </ul>
+  <button id="button_slide" *ngIf="buttonVisible"><img src="assets/nav_icon.svg" alt="icon"></button>
+</nav>
+<router-outlet></router-outlet>
+
